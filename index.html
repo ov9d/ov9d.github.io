@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Open-Vocabulary Category-Level Object Pose and Size Estimation."> 
+  <meta name="keywords" content="Object Pose Estimation; Synthesis Dataset; Open-Vocabulary Learning">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FS6D: Few-Shot 6D Pose Estimation of Novel Objects.</title>
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-W7GG8BJ');</script>
+  <!-- End Google Tag Manager -->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>`
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7GG8BJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">FS6D: Few-Shot 6D Pose Estimation of Novel Objects</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=GeSCNR4AAAAJ&hl=en">Junhao Cai</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://github.com/ethnhe">Yisheng He</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://weihao-yuan.com/">Weihao Yuan</a><sup>2</sup>,</span>
+            <span class="author-block">
+              Siyu Zhu<sup>3</sup>,</span>
+            <span class="author-block">
+              Zilong Dong<sup>2</sup>,</span>
+            <span class="author-block">
+              Liefeng Bo<sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://cqf.io/">Qifeng Chen</a><sup>2</sup>,</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>The Hong Kong University of Science and Technology</span>
+            <span class="author-block"><sup>2</sup>Alibaba Group</span>
+            <span class="author-block"><sup>3</sup>Fudan University</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2203.14628"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://hkustconnect-my.sharepoint.com/:f:/g/personal/yhebk_connect_ust_hk/Ek9OaY-nmD1GqOZdqV05AbIBZqrPpGMqAZSqoqNHBps23Q?e=VF2Ozk"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>OO3D-9D Data</span>
+                  </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/ethnhe/FS6D"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (Comming Soon)</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <center><img src="static/images/intro.png" alt="Alternative Text" width=50% class="center"></center>
+      <center>
+        <p>
+          The open-vocabulary learning of category-level pose and size estimation is trained on a large dataset with diverse categories, 
+          such that it could be generalized to novel categories given text prompts of an unseen target object in novel scene images.
+        </p>
+      </center>
+      <!-- <h2 class="subtitle has-text-centered">
+      </h2> --> 
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            This paper studies a new open-set problem, the open-vocabulary category-level object pose and size estimation. 
+            Given human text descriptions of arbitrary novel object categories, the robot agent seeks to predict 
+            the position, orientation, and size of the target object in the observed scene image. To enable such generalizability, 
+            we first introduce OO3D-9D, a large-scale photorealistic dataset for this task. Derived from OmniObject3D, 
+            OO3D-9D is the largest and most diverse dataset in the field of category-level object pose and size estimation. 
+            It includes additional annotations for the symmetry axis of each category, which help resolve symmetric ambiguity.
+            Apart from the large-scale dataset, we find another key factor to enabling such generalizability is leveraging 
+            the strong prior knowledge in pre-trained visual-language foundation models. We then propose a framework 
+            built on pre-trained DinoV2 and text-to-image stable diffusion models to infer the normalized object coordinate space (NOCS) maps of the target instances. 
+            This framework fully leverages the visual semantic prior from DinoV2 and the aligned visual and language knowledge within the text-to-image diffusion model, 
+            which enables generalization to various text descriptions of novel categories. 
+            Comprehensive quantitative and qualitative experiments demonstrate that the proposed open-vocabulary method, 
+            trained on our large-scale synthesized data, significantly outperforms the baseline and can effectively generalize to real-world images of unseen categories.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- ShapeNet6D. -->
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Dataset</h2>
+          <p>
+            Example images in OO3D-9D dataset. Single-object scenes as CO3D are displayed in the first row while challenging multi-object scenes are displayed in the second row.
+          </p>
+          <center>
+            <img src="static/images/examples_of_oo3d-9d.png" alt="Alternative Text" width=95% class="center">
+          </center>
+        </div>
+      </div>
+    </div>
+    <!--/ ShapeNet6D. -->
+
+    <!-- FS6D-DPM -->
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Method</h2>
+          <p>
+            Overall framework. Text features are acquired from the prompt through the CLIP model and fed to the SD UNet. 
+            By combining these text features with latent visual features from VQVAE, SD feature maps are generated. 
+            Simultaneously, the DinoV2 module processes the masked RGB image to obtain Dino features. 
+            Both features are then combined in the decoder to estimate the NOCS map of the target object. 
+            During the inference stage, the depth map is utilized to establish correspondence between NOCS and the camera frame. 
+            Finally, the object's size and pose are computed using a pose-fitting algorithm.
+          </p>
+          <center>
+            <img src="static/images/framework.png" alt="Alternative Text" width=100% class="center">
+          </center>
+        </div>
+      </div>
+    </div>
+    <!--/ FS6D-DPM -->
+
+    <!-- Visual Effect. -->
+    <div class="columns is-centered">
+      <div class="column">
+        <h2 class="title is-3">Results</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p>Our framework can genralize to novel objects unseeen during training.</p>
+            <center><img src="static/images/cmp_res.png" alt="Alternative Text" width=100% class="center"></center>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Visual Effect. -->
+
+    <!-- Benchmark. -->
+    <div class="columns is-centered">
+      <div class="column">
+        <h2 class="title is-3">Result</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p>Qualitative results on unseen real-world data. 
+              Our model trained with synthetic OO3D-9D data could directly perform 6D pose and size estimation on the unseen real-world Co3Dv2 dataset. 
+              The odd rows display cropped real-world images with our estimated 6D pose and size (visualized with the object bounding box), 
+              while the even rows display their corresponding aligned shapes in the normalized object coordinate space.</p>
+            <center><img src="static/images/co3dv2.png" alt="Alternative Text" width=100% class="center"></center>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Benchmark. -->
+
+
+
+  </div>
+</section>
+
+
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{cai2024open,
+  author    = {Junhao, Cai and Yisheng, He and Weihao, Yuan and Siyu, Zhu and Zilong, Dong, Liefeng, Bo, and Qifeng, Chen},
+  title     = {Open-Vocabulary Category-Level Object Pose and Size Estimation},
+  journal   = {arxiv},
+  year      = {2024},
+}</code></pre>
+  </div>
+</section> -->
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <center>
+            The website template was borrowed from <a
+              href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>
+          </center>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
